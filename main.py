@@ -1,7 +1,5 @@
 import folium
-from folium import plugins
 import pandas as pd
-import word_to_xlsx
 import os
 from tkinter import Tk
 
@@ -16,7 +14,7 @@ groups = dict()
 layers = dict()
 
 for j in df["Тип объекта"]:
-    if j not in groups:
+    if j not in groups and j != 0:
         groups[j] = len(groups)
         layers[j] = (folium.FeatureGroup(name=j))
 
@@ -61,32 +59,3 @@ for layer in layers:
 sakh_map.add_child(folium.map.LayerControl())
 sakh_map.save("map1.html")
 os.system("C:/Users/a.reukov/Desktop/Данил/build_map/map1.html")
-
-
-
-
-
-
-# <h2>{"Объект" if df["Объект"][i] else ""}</h2>
-                                    # <p style="font-size:20px;">{df["Объект"][i] if df["Объект"][i] else ""}</p>
-                                    # <img src='' style="max-width:100%">
-                                    # <h2>{"Адрес" if df["Адрес"][i] else ""}</h2>
-                                    # <p>{df["Адрес"][i] if df["Адрес"][i] else ""}</p>
-                                    # <h2>{"ГО" if df["ГО"][i] else ""}</h2>
-                                    # <p>{df["ГО"][i] if df["ГО"][i] else ""}</p>
-                                    # <h2>{"Областной бюджет, тыс.рублей" if df["Областной бюджет, тыс.рублей"][i] else ""}</h2>
-                                    # <p>{df["Областной бюджет, тыс.рублей"][i] if df["Областной бюджет, тыс.рублей"][i] else ""}</p>
-                                    # <h2>{"Федеральный бюджет, тыс.руб." if df["Федеральный бюджет, тыс.руб."][i] else ""}</h2>
-                                    # <p>{df["Федеральный бюджет, тыс.руб."][i] if df["Федеральный бюджет, тыс.руб."][i] else ""}</p>
-                                    # <h2>{"Оснащение" if df["Оснащение"][i] else ""}</h2>
-                                    # <p>{df["Оснащение"][i] if df["Оснащение"][i] else ""}</p>
-                                    # <h2>{"Капитал. ремонт" if df["Капитал. ремонт"][i] else ""}</h2>
-                                    # <p>{df["Капитал. ремонт"][i] if df["Капитал. ремонт"][i] else ""}</p>
-                                    # <h2>{"Объем финансирования" if df["Объем финансирования"][i] else ""}</h2>
-                                    # <p>{df["Объем финансирования"][i] if df["Объем финансирования"][i] else ""}</p>
-                                    # <h2>{"Вид работ" if df["Вид работ"][i] else ""}</h2>
-                                    # <p>{df["Вид работ"][i] if df["Вид работ"][i] else ""}</p>
-                                    # <h2>{"Вид работ" if df["Вид работ"][i] else ""}</h2>
-                                    # <p>{df["Вид работ"][i] if df["Вид работ"][i] else ""}</p>
-                            #Капитальный ремонт/ строительство
-print(df.columns[0])
